@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+
 import { useRouter } from "next/navigation";
 import { useTripStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
@@ -111,7 +111,7 @@ export function ResultsView() {
               <span className="text-slate-500 dark:text-slate-400 pl-2 font-medium">Currency:</span>
               <select 
                 value={currency} 
-                onChange={(e) => setCurrency(e.target.value as any)}
+                onChange={(e) => setCurrency(e.target.value as "local" | "USD" | "EUR" | "GBP" | "INR")}
                 className="bg-transparent border-none outline-none text-slate-900 dark:text-slate-50 font-semibold cursor-pointer py-1 pr-2"
               >
                 <option value="local">Local</option>
@@ -204,6 +204,7 @@ export function ResultsView() {
                         currency === "INR" ? `₹${dest.estimatedCosts.amountINR.toLocaleString()}` :
                         `${dest.estimatedCosts.amountLocal.toLocaleString()} ${dest.estimatedCosts.localCurrencyCode}`
                       ) : (
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         `$${(dest as any).estimatedCostPerPerson?.toLocaleString() || "N/A"}`
                       )}
                     </span>

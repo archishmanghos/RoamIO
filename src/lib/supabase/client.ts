@@ -21,6 +21,7 @@ export function createClient() {
         insert: async () => ({ data: null, error: null }),
         update: () => ({ eq: async () => ({ data: null, error: null }) }),
       }),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any;
   }
 

@@ -16,12 +16,14 @@ import {
 
 export function Navbar() {
   const pathname = usePathname();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [user, setUser] = useState<any>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const supabase = createClient();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     supabase.auth.getUser().then((res: any) => setUser(res?.data?.user));
 
     const handleScroll = () => setScrolled(window.scrollY > 20);

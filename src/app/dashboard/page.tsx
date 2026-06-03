@@ -109,6 +109,7 @@ export default async function DashboardPage() {
           </Card>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {trips.map((trip: any) => {
               const destinations = trip.result?.destinations || [];
               const input = trip.input || {};

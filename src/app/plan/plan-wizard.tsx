@@ -120,13 +120,10 @@ export function PlanWizard() {
   const isLastStep = currentStep === STEPS.length - 1;
   const currentValue = tripInput[step.key];
 
-  const canProceed = () => {
-    if (step.type === "slider") return true;
-    if (step.type === "counter") return true;
-    return !!currentValue;
-  };
+
 
   const handleOptionSelect = (value: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     updateTripInput(step.key, value as any);
     if (!isLastStep) {
       setTimeout(() => nextStep(), 200);

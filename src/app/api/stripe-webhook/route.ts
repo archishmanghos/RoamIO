@@ -3,7 +3,8 @@ import Stripe from "stripe";
 import { createServiceRoleClient } from "@/lib/supabase/server";
 import { headers } from "next/headers";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "dummy_for_build", {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   apiVersion: "2024-06-20" as any,
 });
 
@@ -18,7 +19,7 @@ export async function POST(request: Request) {
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET);
-  } catch (err) {
+  } catch {
     console.error("[stripe-webhook] Signature verification failed");
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }

@@ -131,6 +131,7 @@ export function ItineraryView() {
     doc.save(`RoamIO-${selectedDestination.name}-Itinerary.pdf`);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const affiliateLinks = (itinerary as any).affiliateLinks;
 
   const TimeIcon = ({ period }: { period: string }) => {
@@ -170,7 +171,7 @@ export function ItineraryView() {
                 <span className="text-slate-500 dark:text-slate-400 pl-2 font-medium">Currency:</span>
                 <select 
                   value={currency} 
-                  onChange={(e) => setCurrency(e.target.value as any)}
+                  onChange={(e) => setCurrency(e.target.value as "local" | "USD" | "EUR" | "GBP" | "INR")}
                   className="bg-transparent border-none outline-none text-slate-900 dark:text-slate-50 font-semibold cursor-pointer py-1 pr-2"
                 >
                   <option value="local">Local</option>

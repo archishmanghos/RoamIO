@@ -25,6 +25,7 @@ export async function POST() {
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       apiVersion: "2024-06-20" as any,
     });
 

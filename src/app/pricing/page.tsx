@@ -5,12 +5,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   Check,
   X,
-  Crown,
-  Zap,
   Globe,
   Sparkles,
   ArrowRight,
-  Wifi,
   BarChart3,
 } from "lucide-react";
 
